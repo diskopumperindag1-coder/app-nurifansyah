@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "c1f76d29-9fa2-43d9-9520-a8c62c95e1e0",
+		"name": "Portal CMS & Layanan Publik API",
+		"description": "Koleksi endpoint REST API V1 untuk Frontend Flutter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CMS",
+			"item": [
+				{
+					"name": "List Posts (Berita)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{"key": "Accept", "value": "application/json"}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/posts?page=1&per_page=10",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "posts"],
+							"query": [
+								{"key": "page", "value": "1"},
+								{"key": "per_page", "value": "10"},
+								{"key": "category", "value": "", "disabled": true},
+								{"key": "search", "value": "", "disabled": true},
+								{"key": "featured", "value": "1", "disabled": true}
+							]
+						}
+					}
+				},
+				{
+					"name": "Detail Post",
+					"request": {
+						"method": "GET",
+						"header": [
+							{"key": "Accept", "value": "application/json"}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/posts/peluncuran-portal-layanan-publik-terpadu-berbasis-digital",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "posts", "peluncuran-portal-layanan-publik-terpadu-berbasis-digital"]
+						}
+					}
+				},
+				{
+					"name": "Detail Page (Tentang Kami)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{"key": "Accept", "value": "application/json"}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/pages/tentang-kami",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "pages", "tentang-kami"]
+						}
+					}
+				},
+				{
+					"name": "List Categories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{"key": "Accept", "value": "application/json"}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/categories",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "categories"]
+						}
+					}
+				},
+				{
+					"name": "List Active Slides",
+					"request": {
+						"method": "GET",
+						"header": [
+							{"key": "Accept", "value": "application/json"}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/slides",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "slides"]
+						}
+					}
+				},
+				{
+					"name": "Get Menu (Header)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{"key": "Accept", "value": "application/json"}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/menus/header",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "menus", "header"]
+						}
+					}
+				},
+				{
+					"name": "Get Settings",
+					"request": {
+						"method": "GET",
+						"header": [
+							{"key": "Accept", "value": "application/json"}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/settings",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "settings"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Layanan Publik",
+			"item": [
+				{
+					"name": "List Question Topics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{"key": "Accept", "value": "application/json"}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/question-topics",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "question-topics"]
+						}
+					}
+				},
+				{
+					"name": "List FAQs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{"key": "Accept", "value": "application/json"}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/faqs",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "faqs"],
+							"query": [
+								{"key": "topic", "value": "", "disabled": true}
+							]
+						}
+					}
+				},
+				{
+					"name": "List Answered Questions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{"key": "Accept", "value": "application/json"}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/questions?page=1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "questions"],
+							"query": [
+								{"key": "page", "value": "1"},
+								{"key": "topic", "value": "", "disabled": true},
+								{"key": "search", "value": "", "disabled": true}
+							]
+						}
+					}
+				},
+				{
+					"name": "Submit New Question",
+					"request": {
+						"method": "POST",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Accept", "value": "application/json"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"topic_id\": 1,\n  \"name\": \"Budi Santoso\",\n  \"email\": \"budi@example.com\",\n  \"phone\": \"081299998888\",\n  \"subject\": \"Jadwal Pelayanan Terpadu\",\n  \"body\": \"Apakah loket permohonan informasi tetap buka di akhir pekan?\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/questions",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "questions"]
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8000"
+		}
+	]
+}
+
