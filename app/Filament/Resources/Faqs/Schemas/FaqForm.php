@@ -16,35 +16,35 @@ class FaqForm
     {
         return $schema
             ->components([
-                Section::make('Informasi FAQ')
+                Section::make(__('FAQ Information'))
                     ->schema([
                         Grid::make(3)
                             ->schema([
                                 Select::make('topic_id')
-                                    ->label('Topik FAQ')
+                                    ->label(__('FAQ Topic'))
                                     ->relationship('topic', 'name')
                                     ->searchable()
                                     ->preload()
                                     ->nullable()
                                     ->columnSpan(2),
                                 TextInput::make('sort_order')
-                                    ->label('Urutan Tampilan')
+                                    ->label(__('Display Order'))
                                     ->numeric()
                                     ->default(0)
                                     ->columnSpan(1),
                             ]),
                         TextInput::make('question')
-                            ->label('Pertanyaan (Question)')
+                            ->label(__('Question'))
                             ->required()
                             ->maxLength(255)
                             ->columnSpanFull()
-                            ->placeholder('contoh: Berapa biaya pengurusan surat izin?'),
+                            ->placeholder(__('e.g. What is the fee for permit application?')),
                         RichEditor::make('answer')
-                            ->label('Jawaban (Answer)')
+                            ->label(__('Answer'))
                             ->required()
                             ->columnSpanFull(),
                         Toggle::make('is_active')
-                            ->label('Status Aktif')
+                            ->label(__('Active Status'))
                             ->default(true),
                     ]),
             ]);

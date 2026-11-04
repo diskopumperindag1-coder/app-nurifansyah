@@ -26,7 +26,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->brandName('CMS & Layanan Publik')
+            ->brandName(fn () => __('CMS & Public Services'))
             ->colors([
                 'primary' => Color::Indigo,
                 'gray' => Color::Slate,

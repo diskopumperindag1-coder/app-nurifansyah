@@ -23,23 +23,23 @@ class StatsOverviewWidget extends BaseStatsOverviewWidget
         $totalFaqs = Faq::active()->count();
 
         return [
-            Stat::make('Total Artikel', $totalPosts)
-                ->description("{$publishedPosts} artikel diterbitkan")
+            Stat::make(__('Total Articles'), $totalPosts)
+                ->description(__(':count articles published', ['count' => $publishedPosts]))
                 ->descriptionIcon('heroicon-m-document-text')
                 ->color('primary'),
 
-            Stat::make('Pertanyaan Menunggu', $pendingQuestions)
-                ->description($pendingQuestions > 0 ? 'Perlu ditinjau petugas' : 'Semua pertanyaan terjawab')
+            Stat::make(__('Pending Questions'), $pendingQuestions)
+                ->description($pendingQuestions > 0 ? __('Needs officer review') : __('All questions answered'))
                 ->descriptionIcon('heroicon-m-clock')
                 ->color($pendingQuestions > 0 ? 'warning' : 'success'),
 
-            Stat::make('Pertanyaan Terjawab', $answeredQuestions)
-                ->description('Respon selesai')
+            Stat::make(__('Answered Questions'), $answeredQuestions)
+                ->description(__('Responses completed'))
                 ->descriptionIcon('heroicon-m-check-circle')
                 ->color('success'),
 
-            Stat::make('Halaman & FAQ', "{$totalPages} Hal / {$totalFaqs} FAQ")
-                ->description('Informasi statis aktif')
+            Stat::make(__('Pages & FAQs'), __(':pages Pages / :faqs FAQs', ['pages' => $totalPages, 'faqs' => $totalFaqs]))
+                ->description(__('Active static information'))
                 ->descriptionIcon('heroicon-m-information-circle')
                 ->color('info'),
         ];

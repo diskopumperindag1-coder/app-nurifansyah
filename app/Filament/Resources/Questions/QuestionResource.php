@@ -14,7 +14,6 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
-use UnitEnum;
 
 class QuestionResource extends Resource
 {
@@ -22,15 +21,27 @@ class QuestionResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedQuestionMarkCircle;
 
-    protected static string|UnitEnum|null $navigationGroup = 'Layanan Publik';
-
-    protected static ?string $navigationLabel = 'Pertanyaan Masyarakat';
-
-    protected static ?string $modelLabel = 'Pertanyaan';
-
-    protected static ?string $pluralModelLabel = 'Pertanyaan Masuk';
-
     protected static ?int $navigationSort = 2;
+
+    public static function getModelLabel(): string
+    {
+        return __('Question');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('Incoming Questions');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Public Questions');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Public Services');
+    }
 
     public static function form(Schema $schema): Schema
     {

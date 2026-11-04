@@ -2,18 +2,21 @@
 
 namespace App\Enums;
 
-enum QuestionStatus: string
+use Filament\Support\Contracts\HasColor;
+use Filament\Support\Contracts\HasLabel;
+
+enum QuestionStatus: string implements HasColor, HasLabel
 {
     case Pending = 'pending';
     case Answered = 'answered';
     case Rejected = 'rejected';
 
-    public function getLabel(): string
+    public function getLabel(): ?string
     {
         return match ($this) {
-            self::Pending => 'Menunggu Jawaban (Pending)',
-            self::Answered => 'Sudah Dijawab (Answered)',
-            self::Rejected => 'Ditolak (Rejected)',
+            self::Pending => __('Pending'),
+            self::Answered => __('Answered'),
+            self::Rejected => __('Rejected'),
         };
     }
 

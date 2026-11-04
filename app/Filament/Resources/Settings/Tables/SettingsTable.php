@@ -16,37 +16,37 @@ class SettingsTable
         return $table
             ->columns([
                 TextColumn::make('group')
-                    ->label('Grup')
+                    ->label(__('Group'))
                     ->badge()
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('key')
-                    ->label('Kunci (Key)')
+                    ->label(__('Key'))
                     ->weight('bold')
                     ->searchable(),
                 TextColumn::make('value')
-                    ->label('Nilai (Value)')
+                    ->label(__('Value'))
                     ->limit(50)
                     ->tooltip(fn ($record): ?string => $record->value)
                     ->searchable(),
                 TextColumn::make('type')
-                    ->label('Tipe')
+                    ->label(__('Type'))
                     ->badge()
                     ->color('gray'),
                 TextColumn::make('updated_at')
-                    ->label('Diperbarui')
+                    ->label(__('Updated At'))
                     ->dateTime('d M Y H:i')
                     ->sortable(),
             ])
             ->filters([
                 SelectFilter::make('group')
-                    ->label('Grup')
+                    ->label(__('Group'))
                     ->options([
-                        'general' => 'Umum',
-                        'contact' => 'Kontak & Alamat',
-                        'social' => 'Media Sosial',
-                        'appearance' => 'Tampilan & Logo',
-                        'seo' => 'SEO & Meta',
+                        'general' => __('General'),
+                        'contact' => __('Contact & Address'),
+                        'social' => __('Social Media'),
+                        'appearance' => __('Appearance & Logo'),
+                        'seo' => __('SEO & Meta'),
                     ]),
             ])
             ->recordActions([

@@ -17,40 +17,40 @@ class QuestionsTable
         return $table
             ->columns([
                 TextColumn::make('subject')
-                    ->label('Subjek Pertanyaan')
+                    ->label(__('Question Subject'))
                     ->weight('bold')
                     ->searchable()
                     ->sortable()
                     ->limit(45),
                 TextColumn::make('name')
-                    ->label('Penanya')
+                    ->label(__('Inquirer'))
                     ->searchable()
                     ->description(fn ($record): string => $record->email.($record->phone ? ' | '.$record->phone : '')),
                 TextColumn::make('topic.name')
-                    ->label('Topik')
+                    ->label(__('Topic'))
                     ->badge()
                     ->color('info')
                     ->sortable(),
                 TextColumn::make('status')
-                    ->label('Status')
+                    ->label(__('Status'))
                     ->badge()
                     ->color(fn (QuestionStatus $state): string => $state->getColor()),
                 TextColumn::make('created_at')
-                    ->label('Diajukan Pada')
+                    ->label(__('Submitted At'))
                     ->dateTime('d M Y H:i')
                     ->sortable(),
             ])
             ->defaultSort('created_at', 'desc')
             ->filters([
                 SelectFilter::make('status')
-                    ->label('Status')
+                    ->label(__('Status'))
                     ->options(QuestionStatus::class),
                 SelectFilter::make('topic_id')
-                    ->label('Topik')
+                    ->label(__('Topic'))
                     ->relationship('topic', 'name'),
             ])
             ->recordActions([
-                EditAction::make()->label('Tinjau & Jawab'),
+                EditAction::make()->label(__('Review & Answer')),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

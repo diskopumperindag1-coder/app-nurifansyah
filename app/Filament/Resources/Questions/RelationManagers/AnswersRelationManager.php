@@ -22,33 +22,37 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Notification;
 
 class AnswersRelationManager extends RelationManager
 {
     protected static string $relationship = 'answers';
 
-    protected static ?string $title = 'Jawaban Petugas';
+    public static function getTitle(Model $ownerRecord, string $pageClass): string
+    {
+        return __('Officer Answers');
+    }
 
     public function form(Schema $schema): Schema
     {
         return $schema
             ->components([
                 RichEditor::make('body')
-                    ->label('Isi Tanggapan / Jawaban')
+                    ->label(__('Response / Answer Content'))
                     ->required()
                     ->columnSpanFull(),
                 Select::make('status')
-                    ->label('Status Jawaban')
+                    ->label(__('Answer Status'))
                     ->options(AnswerStatus::class)
                     ->default(AnswerStatus::Published->value)
                     ->required(),
                 Toggle::make('is_published')
-                    ->label('Publikasikan ke Publik')
-                    ->helperText('Jika diaktifkan, pertanyaan & jawaban ini dapat dilihat di portal publik')
+                    ->label(__('Publish to Public'))
+                    ->helperText(__('If enabled, this question & answer can be viewed on the public portal'))
                     ->default(true),
                 DateTimePicker::make('answered_at')
-                    ->label('Waktu Dijawab')
+                    ->label(__('Time Answered'))
                     ->default(now()),
                 Hidden::make('user_id')
                     ->default(fn () => auth()->id()),
@@ -61,27 +65,27 @@ class AnswersRelationManager extends RelationManager
             ->recordTitleAttribute('id')
             ->columns([
                 TextColumn::make('user.name')
-                    ->label('Petugas Penjawab')
+                    ->label(__('Responding Officer'))
                     ->weight('bold'),
                 TextColumn::make('body')
-                    ->label('Ringkasan Jawaban')
+                    ->label(__('Answer Summary'))
                     ->html()
                     ->limit(60),
                 TextColumn::make('status')
-                    ->label('Status')
+                    ->label(__('Status'))
                     ->badge()
                     ->color(fn (AnswerStatus $state): string => $state->getColor()),
                 IconColumn::make('is_published')
-                    ->label('Dipublikasi')
+                    ->label(__('Published'))
                     ->boolean(),
                 TextColumn::make('answered_at')
-                    ->label('Tanggal Dijawab')
+                    ->label(__('Date Answered'))
                     ->dateTime('d M Y H:i')
                     ->sortable(),
             ])
             ->headerActions([
                 CreateAction::make()
-                    ->label('Tulis Jawaban')
+                    ->label(__('Write Answer'))
                     ->mutateFormDataUsing(function (array $data): array {
                         $data['user_id'] = auth()->id();
                         $data['answered_at'] = now();
@@ -104,8 +108,8 @@ class AnswersRelationManager extends RelationManager
                             }
 
                             FilamentNotification::make()
-                                ->title('Jawaban Berhasil Disimpan')
-                                ->body('Status pertanyaan telah diperbarui menjadi Sudah Dijawab.')
+                                ->title(__('Answer Saved Successfully'))
+                                ->body(__('Question status has been updated to Answered.'))
                                 ->success()
                                 ->send();
                         }

@@ -2,18 +2,21 @@
 
 namespace App\Enums;
 
-enum PostStatus: string
+use Filament\Support\Contracts\HasColor;
+use Filament\Support\Contracts\HasLabel;
+
+enum PostStatus: string implements HasColor, HasLabel
 {
     case Draft = 'draft';
     case Published = 'published';
     case Archived = 'archived';
 
-    public function getLabel(): string
+    public function getLabel(): ?string
     {
         return match ($this) {
-            self::Draft => 'Draft',
-            self::Published => 'Diterbitkan (Published)',
-            self::Archived => 'Diarsipkan (Archived)',
+            self::Draft => __('Draft'),
+            self::Published => __('Published'),
+            self::Archived => __('Archived'),
         };
     }
 

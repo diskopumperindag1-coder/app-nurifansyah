@@ -14,37 +14,37 @@ class SettingForm
         return $schema
             ->components([
                 Select::make('group')
-                    ->label('Grup Pengaturan')
+                    ->label(__('Settings Group'))
                     ->options([
-                        'general' => 'Umum (General)',
-                        'contact' => 'Kontak & Alamat',
-                        'social' => 'Media Sosial',
-                        'appearance' => 'Tampilan & Logo',
-                        'seo' => 'SEO & Meta',
+                        'general' => __('General'),
+                        'contact' => __('Contact & Address'),
+                        'social' => __('Social Media'),
+                        'appearance' => __('Appearance & Logo'),
+                        'seo' => __('SEO & Meta'),
                     ])
                     ->default('general')
                     ->required(),
                 TextInput::make('key')
-                    ->label('Kunci (Key)')
+                    ->label(__('Key'))
                     ->required()
                     ->unique(ignoreRecord: true)
-                    ->placeholder('contoh: site_name, office_phone, instagram_url'),
+                    ->placeholder(__('e.g. site_name, office_phone, instagram_url')),
                 Select::make('type')
-                    ->label('Tipe Data')
+                    ->label(__('Data Type'))
                     ->options([
-                        'text' => 'Teks Singkat',
-                        'textarea' => 'Teks Panjang',
-                        'image' => 'URL / Path Gambar',
-                        'boolean' => 'Boolean (0 atau 1)',
-                        'json' => 'JSON Data',
+                        'text' => __('Short Text'),
+                        'textarea' => __('Long Text'),
+                        'image' => __('Image URL / Path'),
+                        'boolean' => __('Boolean (0 or 1)'),
+                        'json' => __('JSON Data'),
                     ])
                     ->default('text')
                     ->required(),
                 Textarea::make('value')
-                    ->label('Nilai (Value)')
+                    ->label(__('Value'))
                     ->rows(4)
                     ->columnSpanFull()
-                    ->placeholder('Masukkan isi nilai konfigurasi...'),
+                    ->placeholder(__('Enter configuration value...')),
             ]);
     }
 }

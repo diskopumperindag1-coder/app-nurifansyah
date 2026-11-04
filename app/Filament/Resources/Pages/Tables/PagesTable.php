@@ -20,31 +20,31 @@ class PagesTable
         return $table
             ->columns([
                 ImageColumn::make('image')
-                    ->label('Gambar')
+                    ->label(__('Image'))
                     ->disk('public')
                     ->square(),
                 TextColumn::make('title')
-                    ->label('Judul Halaman')
+                    ->label(__('Page Title'))
                     ->weight('bold')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('slug')
-                    ->label('Slug')
+                    ->label(__('Slug'))
                     ->color('gray')
                     ->searchable(),
                 TextColumn::make('status')
-                    ->label('Status')
+                    ->label(__('Status'))
                     ->badge()
                     ->color(fn (PageStatus $state): string => $state->getColor()),
                 TextColumn::make('sort_order')
-                    ->label('Urutan')
+                    ->label(__('Sort Order'))
                     ->numeric()
                     ->sortable(),
                 IconColumn::make('show_in_menu')
-                    ->label('Di Menu')
+                    ->label(__('In Menu'))
                     ->boolean(),
                 TextColumn::make('updated_at')
-                    ->label('Diperbarui')
+                    ->label(__('Updated At'))
                     ->dateTime('d M Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -52,10 +52,10 @@ class PagesTable
             ->defaultSort('sort_order')
             ->filters([
                 SelectFilter::make('status')
-                    ->label('Status')
+                    ->label(__('Status'))
                     ->options(PageStatus::class),
                 TernaryFilter::make('show_in_menu')
-                    ->label('Di Menu'),
+                    ->label(__('In Menu')),
             ])
             ->recordActions([
                 EditAction::make(),

@@ -16,48 +16,48 @@ class QuestionForm
     {
         return $schema
             ->components([
-                Section::make('Data Penanya')
+                Section::make(__('Inquirer Data'))
                     ->schema([
                         Grid::make(3)
                             ->schema([
                                 TextInput::make('name')
-                                    ->label('Nama Lengkap')
+                                    ->label(__('Full Name'))
                                     ->required(),
                                 TextInput::make('email')
-                                    ->label('Alamat Email')
+                                    ->label(__('Email Address'))
                                     ->email()
                                     ->required(),
                                 TextInput::make('phone')
-                                    ->label('Nomor Telepon / WhatsApp')
+                                    ->label(__('Phone / WhatsApp Number'))
                                     ->tel(),
                             ]),
                     ]),
 
-                Section::make('Rincian Pertanyaan')
+                Section::make(__('Question Details'))
                     ->schema([
                         Grid::make(2)
                             ->schema([
                                 Select::make('topic_id')
-                                    ->label('Topik Pertanyaan')
+                                    ->label(__('Question Topic'))
                                     ->relationship('topic', 'name')
                                     ->required(),
                                 Select::make('status')
-                                    ->label('Status Pertanyaan')
+                                    ->label(__('Question Status'))
                                     ->options(QuestionStatus::class)
                                     ->default(QuestionStatus::Pending->value)
                                     ->required(),
                             ]),
                         TextInput::make('subject')
-                            ->label('Judul / Subjek')
+                            ->label(__('Subject / Title'))
                             ->required()
                             ->columnSpanFull(),
                         Textarea::make('body')
-                            ->label('Isi Pertanyaan Lengkap')
+                            ->label(__('Full Question Body'))
                             ->rows(6)
                             ->required()
                             ->columnSpanFull(),
                         TextInput::make('ip_address')
-                            ->label('IP Address Pengirim')
+                            ->label(__('Sender IP Address'))
                             ->disabled()
                             ->dehydrated(false),
                     ]),

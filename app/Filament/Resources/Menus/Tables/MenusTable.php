@@ -16,11 +16,11 @@ class MenusTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Nama Menu')
+                    ->label(__('Menu Name'))
                     ->weight('bold')
                     ->searchable(),
                 TextColumn::make('location')
-                    ->label('Lokasi')
+                    ->label(__('Location'))
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
                         'header' => 'primary',
@@ -28,15 +28,15 @@ class MenusTable
                         default => 'gray',
                     }),
                 TextColumn::make('items_count')
-                    ->label('Jumlah Item')
+                    ->label(__('Items Count'))
                     ->counts('items')
                     ->badge()
                     ->color('success'),
                 IconColumn::make('is_active')
-                    ->label('Aktif')
+                    ->label(__('Active'))
                     ->boolean(),
                 TextColumn::make('updated_at')
-                    ->label('Diperbarui')
+                    ->label(__('Updated At'))
                     ->dateTime('d M Y H:i')
                     ->sortable(),
             ])

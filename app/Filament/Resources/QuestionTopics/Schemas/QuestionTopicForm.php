@@ -15,7 +15,7 @@ class QuestionTopicForm
         return $schema
             ->components([
                 TextInput::make('name')
-                    ->label('Nama Topik')
+                    ->label(__('Topic Name'))
                     ->required()
                     ->live(onBlur: true)
                     ->afterStateUpdated(function (string $operation, ?string $state, callable $set) {
@@ -24,22 +24,22 @@ class QuestionTopicForm
                         }
                     }),
                 TextInput::make('slug')
-                    ->label('Slug')
+                    ->label(__('Slug'))
                     ->required()
                     ->unique(ignoreRecord: true),
                 Textarea::make('description')
-                    ->label('Deskripsi')
+                    ->label(__('Description'))
                     ->rows(3)
                     ->columnSpanFull(),
                 TextInput::make('icon')
-                    ->label('Ikon')
-                    ->placeholder('contoh: document-check, academic-cap'),
+                    ->label(__('Icon'))
+                    ->placeholder(__('e.g. document-check, academic-cap')),
                 TextInput::make('sort_order')
-                    ->label('Urutan')
+                    ->label(__('Sort Order'))
                     ->numeric()
                     ->default(0),
                 Toggle::make('is_active')
-                    ->label('Status Aktif')
+                    ->label(__('Active Status'))
                     ->default(true),
             ]);
     }

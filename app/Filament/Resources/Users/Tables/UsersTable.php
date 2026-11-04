@@ -18,18 +18,18 @@ class UsersTable
         return $table
             ->columns([
                 ImageColumn::make('avatar')
-                    ->label('Foto')
+                    ->label(__('Photo'))
                     ->circular()
                     ->disk('public'),
                 TextColumn::make('name')
-                    ->label('Nama')
+                    ->label(__('Name'))
                     ->weight('bold')
                     ->searchable(),
                 TextColumn::make('email')
-                    ->label('Email')
+                    ->label(__('Email'))
                     ->searchable(),
                 TextColumn::make('role')
-                    ->label('Role')
+                    ->label(__('Role'))
                     ->badge()
                     ->color(fn (UserRole $state): string => match ($state) {
                         UserRole::Admin => 'danger',
@@ -37,13 +37,13 @@ class UsersTable
                         UserRole::Viewer => 'gray',
                     }),
                 TextColumn::make('created_at')
-                    ->label('Terdaftar')
+                    ->label(__('Registered At'))
                     ->dateTime('d M Y H:i')
                     ->sortable(),
             ])
             ->filters([
                 SelectFilter::make('role')
-                    ->label('Role')
+                    ->label(__('Role'))
                     ->options(UserRole::class),
             ])
             ->recordActions([

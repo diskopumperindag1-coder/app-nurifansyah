@@ -16,30 +16,30 @@ class UserForm
     {
         return $schema
             ->components([
-                Section::make('Informasi Akun')
+                Section::make(__('Account Information'))
                     ->schema([
                         TextInput::make('name')
-                            ->label('Nama Lengkap')
+                            ->label(__('Full Name'))
                             ->required(),
                         TextInput::make('email')
-                            ->label('Email')
+                            ->label(__('Email'))
                             ->email()
                             ->required()
                             ->unique(ignoreRecord: true),
                         TextInput::make('password')
-                            ->label('Kata Sandi')
+                            ->label(__('Password'))
                             ->password()
                             ->dehydrateStateUsing(fn ($state) => filled($state) ? Hash::make($state) : null)
                             ->dehydrated(fn ($state) => filled($state))
                             ->required(fn (string $operation): bool => $operation === 'create')
-                            ->helperText('Kosongkan jika tidak ingin mengubah kata sandi.'),
+                            ->helperText(__('Leave blank if you do not want to change the password.')),
                         Select::make('role')
-                            ->label('Hak Akses (Role)')
+                            ->label(__('Access Role'))
                             ->options(UserRole::class)
                             ->default(UserRole::Editor->value)
                             ->required(),
                         FileUpload::make('avatar')
-                            ->label('Foto Profil (Avatar)')
+                            ->label(__('Profile Photo (Avatar)'))
                             ->image()
                             ->avatar()
                             ->disk('public')

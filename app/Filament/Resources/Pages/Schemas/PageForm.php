@@ -24,10 +24,10 @@ class PageForm
                 Grid::make(3)
                     ->schema([
                         Group::make([
-                            Section::make('Konten Halaman')
+                            Section::make(__('Page Content'))
                                 ->schema([
                                     TextInput::make('title')
-                                        ->label('Judul Halaman')
+                                        ->label(__('Page Title'))
                                         ->required()
                                         ->maxLength(255)
                                         ->live(onBlur: true)
@@ -37,41 +37,41 @@ class PageForm
                                             }
                                         }),
                                     TextInput::make('slug')
-                                        ->label('Slug URL')
+                                        ->label(__('URL Slug'))
                                         ->required()
                                         ->maxLength(255)
                                         ->unique(ignoreRecord: true),
                                     RichEditor::make('content')
-                                        ->label('Isi Konten')
+                                        ->label(__('Content'))
                                         ->required()
                                         ->columnSpanFull(),
                                 ]),
                         ])->columnSpan(2),
 
                         Group::make([
-                            Section::make('Publikasi & Menu')
+                            Section::make(__('Publication & Menu'))
                                 ->schema([
                                     Select::make('status')
-                                        ->label('Status')
+                                        ->label(__('Status'))
                                         ->options(PageStatus::class)
                                         ->default(PageStatus::Published->value)
                                         ->required(),
                                     TextInput::make('sort_order')
-                                        ->label('Urutan Tampilan')
+                                        ->label(__('Display Order'))
                                         ->numeric()
                                         ->default(0),
                                     Toggle::make('show_in_menu')
-                                        ->label('Tampilkan di Navigasi')
-                                        ->helperText('Tersedia untuk dipasang pada menu')
+                                        ->label(__('Show in Navigation'))
+                                        ->helperText(__('Available to be attached to menu'))
                                         ->default(true),
                                     Hidden::make('user_id')
                                         ->default(fn () => auth()->id()),
                                 ]),
 
-                            Section::make('Gambar Sampul (Opsional)')
+                            Section::make(__('Cover Image (Optional)'))
                                 ->schema([
                                     FileUpload::make('image')
-                                        ->label('Gambar Halaman')
+                                        ->label(__('Page Image'))
                                         ->image()
                                         ->disk('public')
                                         ->directory('pages')

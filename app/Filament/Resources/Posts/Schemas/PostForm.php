@@ -26,10 +26,10 @@ class PostForm
                 Grid::make(3)
                     ->schema([
                         Group::make([
-                            Section::make('Konten Artikel')
+                            Section::make(__('Article Content'))
                                 ->schema([
                                     TextInput::make('title')
-                                        ->label('Judul Artikel')
+                                        ->label(__('Article Title'))
                                         ->required()
                                         ->maxLength(255)
                                         ->live(onBlur: true)
@@ -39,33 +39,33 @@ class PostForm
                                             }
                                         }),
                                     TextInput::make('slug')
-                                        ->label('Slug URL')
+                                        ->label(__('URL Slug'))
                                         ->required()
                                         ->maxLength(255)
                                         ->unique(ignoreRecord: true),
                                     Textarea::make('summary')
-                                        ->label('Ringkasan / Sinopsis')
+                                        ->label(__('Summary / Synopsis'))
                                         ->rows(3)
                                         ->columnSpanFull()
-                                        ->placeholder('Ringkasan singkat untuk tampilan kartu preview berita...'),
+                                        ->placeholder(__('Brief summary for news preview card display...')),
                                     RichEditor::make('content')
-                                        ->label('Isi Konten Lengkap')
+                                        ->label(__('Full Content'))
                                         ->required()
                                         ->columnSpanFull(),
                                 ]),
                         ])->columnSpan(2),
 
                         Group::make([
-                            Section::make('Publikasi & Kategori')
+                            Section::make(__('Publication & Category'))
                                 ->schema([
                                     Select::make('category_id')
-                                        ->label('Kategori')
+                                        ->label(__('Category'))
                                         ->relationship('category', 'name')
                                         ->searchable()
                                         ->preload()
                                         ->required(),
                                     Select::make('status')
-                                        ->label('Status')
+                                        ->label(__('Status'))
                                         ->options(PostStatus::class)
                                         ->default(PostStatus::Draft->value)
                                         ->required()
@@ -76,20 +76,20 @@ class PostForm
                                             }
                                         }),
                                     DateTimePicker::make('published_at')
-                                        ->label('Tanggal Publikasi')
+                                        ->label(__('Publication Date'))
                                         ->default(now()),
                                     Toggle::make('is_featured')
-                                        ->label('Artikel Unggulan (Featured)')
-                                        ->helperText('Tampilkan di banner utama / headline')
+                                        ->label(__('Featured Article'))
+                                        ->helperText(__('Show in main banner / headline'))
                                         ->default(false),
                                     Hidden::make('user_id')
                                         ->default(fn () => auth()->id()),
                                 ]),
 
-                            Section::make('Gambar Utama')
+                            Section::make(__('Main Image'))
                                 ->schema([
                                     FileUpload::make('image')
-                                        ->label('Featured Image')
+                                        ->label(__('Featured Image'))
                                         ->image()
                                         ->disk('public')
                                         ->directory('posts')

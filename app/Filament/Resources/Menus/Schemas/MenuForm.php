@@ -16,31 +16,31 @@ class MenuForm
     {
         return $schema
             ->components([
-                Section::make('Informasi Menu')
+                Section::make(__('Menu Information'))
                     ->schema([
                         Grid::make(2)
                             ->schema([
                                 TextInput::make('name')
-                                    ->label('Nama Menu')
+                                    ->label(__('Menu Name'))
                                     ->required()
-                                    ->placeholder('contoh: Menu Utama, Menu Footer'),
+                                    ->placeholder(__('e.g. Main Menu, Footer Menu')),
                                 Select::make('location')
-                                    ->label('Lokasi Penempatan')
+                                    ->label(__('Placement Location'))
                                     ->options([
-                                        'header' => 'Header (Navigasi Atas)',
-                                        'footer' => 'Footer (Navigasi Bawah)',
-                                        'sidebar' => 'Sidebar (Samping)',
+                                        'header' => __('Header (Top Navigation)'),
+                                        'footer' => __('Footer (Bottom Navigation)'),
+                                        'sidebar' => __('Sidebar'),
                                     ])
                                     ->required()
                                     ->default('header'),
                             ]),
                         Toggle::make('is_active')
-                            ->label('Status Aktif')
+                            ->label(__('Active Status'))
                             ->default(true),
                     ]),
 
-                Section::make('Daftar Item Menu')
-                    ->description('Kelola tautan dan urutan item di dalam menu ini')
+                Section::make(__('Menu Items List'))
+                    ->description(__('Manage links and order of items in this menu'))
                     ->schema([
                         Repeater::make('items')
                             ->relationship('items')
@@ -48,24 +48,24 @@ class MenuForm
                                 Grid::make(4)
                                     ->schema([
                                         TextInput::make('label')
-                                            ->label('Label Item')
+                                            ->label(__('Item Label'))
                                             ->required(),
                                         Select::make('type')
-                                            ->label('Tipe Tautan')
+                                            ->label(__('Link Type'))
                                             ->options([
-                                                'custom' => 'Tautan Kustom / Eksternal',
-                                                'page' => 'Halaman Statis',
-                                                'post' => 'Artikel',
-                                                'category' => 'Kategori Berita',
+                                                'custom' => __('Custom / External Link'),
+                                                'page' => __('Static Page'),
+                                                'post' => __('Post'),
+                                                'category' => __('News Category'),
                                             ])
                                             ->default('custom')
                                             ->required(),
                                         TextInput::make('url')
-                                            ->label('URL / Path')
+                                            ->label(__('URL / Path'))
                                             ->required()
-                                            ->placeholder('/tentang-kami atau https://...'),
+                                            ->placeholder(__('e.g. /about-us or https://...')),
                                         Toggle::make('is_active')
-                                            ->label('Aktif')
+                                            ->label(__('Active'))
                                             ->default(true)
                                             ->inline(false),
                                     ]),

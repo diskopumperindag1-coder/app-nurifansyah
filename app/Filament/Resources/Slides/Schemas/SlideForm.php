@@ -21,24 +21,24 @@ class SlideForm
                 Grid::make(3)
                     ->schema([
                         Group::make([
-                            Section::make('Informasi Banner')
+                            Section::make(__('Banner Information'))
                                 ->schema([
                                     TextInput::make('title')
-                                        ->label('Judul Slide')
+                                        ->label(__('Slide Title'))
                                         ->required()
                                         ->maxLength(255),
                                     Textarea::make('description')
-                                        ->label('Deskripsi / Keterangan Singkat')
+                                        ->label(__('Description / Short Notes'))
                                         ->rows(3)
                                         ->columnSpanFull(),
                                     TextInput::make('link_url')
-                                        ->label('Tautan Tujuan (Link URL)')
-                                        ->placeholder('https://... atau /posts/judul-artikel'),
+                                        ->label(__('Target Link (URL)'))
+                                        ->placeholder(__('https://... or /posts/article-title')),
                                 ]),
-                            Section::make('Gambar Banner')
+                            Section::make(__('Banner Image'))
                                 ->schema([
                                     FileUpload::make('image')
-                                        ->label('Gambar Slide')
+                                        ->label(__('Slide Image'))
                                         ->image()
                                         ->disk('public')
                                         ->directory('slides')
@@ -49,20 +49,20 @@ class SlideForm
                         ])->columnSpan(2),
 
                         Group::make([
-                            Section::make('Pengaturan Tampil')
+                            Section::make(__('Display Settings'))
                                 ->schema([
                                     TextInput::make('sort_order')
-                                        ->label('Urutan')
+                                        ->label(__('Sort Order'))
                                         ->numeric()
                                         ->default(0)
                                         ->required(),
                                     Toggle::make('is_active')
-                                        ->label('Status Aktif')
+                                        ->label(__('Active Status'))
                                         ->default(true),
                                     DatePicker::make('start_date')
-                                        ->label('Mulai Tayang'),
+                                        ->label(__('Start Date')),
                                     DatePicker::make('end_date')
-                                        ->label('Selesai Tayang'),
+                                        ->label(__('End Date')),
                                 ]),
                         ])->columnSpan(1),
                     ])->columnSpanFull(),
