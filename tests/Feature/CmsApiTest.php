@@ -151,4 +151,47 @@ class CmsApiTest extends TestCase
         $response->assertStatus(200)
             ->assertJsonPath('data.settings.site_name', 'Portal Instansi');
     }
+
+    public function test_can_get_posts_with_multilingual_locale(): void
+    {
+        $user = User::factory()->create();
+        $category = Category::factory()->create([
+            'name' => [
+                'id' => 'Berita ID',
+                'en' => 'News EN',
+            ],
+        ]);
+
+        Post::factory()->create([
+            'user_id' => $user->id,
+            'category_id' => $category->id,
+            'title' => [
+                'id' => 'Judul Bahasa Indonesia',
+                'en' => 'English Headline Title',
+            ],
+            'summary' => [
+                'id' => 'Ringkasan ID',
+                'en' => 'Summary EN',
+            ],
+            'status' => PostStatus::Published,
+            'published_at' => now()->subHour(),
+        ]);
+
+        // Default / ID
+        $responseId = $this->getJson('/api/v1/posts', ['Accept-Language' => 'id']);
+        $responseId->assertStatus(200)
+            ->assertJsonPath('data.0.title', 'Judul Bahasa Indonesia')
+            ->assertJsonPath('data.0.category.name', 'Berita ID');
+
+        // English via Accept-Language
+        $responseEn = $this->getJson('/api/v1/posts', ['Accept-Language' => 'en']);
+        $responseEn->assertStatus(200)
+            ->assertJsonPath('data.0.title', 'English Headline Title')
+            ->assertJsonPath('data.0.category.name', 'News EN');
+
+        // English via query param ?locale=en
+        $responseQuery = $this->getJson('/api/v1/posts?locale=en');
+        $responseQuery->assertStatus(200)
+            ->assertJsonPath('data.0.title', 'English Headline Title');
+    }
 }
