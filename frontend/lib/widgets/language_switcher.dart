@@ -18,16 +18,31 @@ class LanguageSwitcher extends StatelessWidget {
 
     localeProvider.setLocale(langCode);
 
-    // Update ApiClient locale and re-fetch active data
-    final apiClient = Provider.of<ApiClient>(context, listen: false);
-    apiClient.updateLocale(langCode);
+    // Update ApiClient locale and re-fetch active data safely
+    try {
+      final apiClient = Provider.of<ApiClient>(context, listen: false);
+      apiClient.updateLocale(langCode);
+    } catch (_) {}
 
-    Provider.of<PortalProvider>(context, listen: false).fetchPortalData();
-    Provider.of<PostProvider>(context, listen: false).fetchFeaturedPosts();
-    Provider.of<PostProvider>(context, listen: false).fetchPosts(refresh: true);
-    Provider.of<QuestionProvider>(context, listen: false).fetchFaqs();
-    Provider.of<QuestionProvider>(context, listen: false).fetchQuestions();
-    Provider.of<PageProvider>(context, listen: false).clearCache();
+    try {
+      Provider.of<PortalProvider>(context, listen: false).fetchPortalData();
+    } catch (_) {}
+
+    try {
+      final postProvider = Provider.of<PostProvider>(context, listen: false);
+      postProvider.fetchFeaturedPosts();
+      postProvider.fetchPosts(refresh: true);
+    } catch (_) {}
+
+    try {
+      final qProvider = Provider.of<QuestionProvider>(context, listen: false);
+      qProvider.fetchFaqs();
+      qProvider.fetchQuestions();
+    } catch (_) {}
+
+    try {
+      Provider.of<PageProvider>(context, listen: false).clearCache();
+    } catch (_) {}
   }
 
   @override

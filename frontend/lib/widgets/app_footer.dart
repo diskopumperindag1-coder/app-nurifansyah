@@ -171,11 +171,13 @@ class AppFooter extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    '© ${DateTime.now().year} ${settings?.siteName ?? loc.appTitle}. ${loc.copyright}',
-                    style: TextStyle(
-                      color: Colors.white.withOpacity(0.5),
-                      fontSize: 12,
+                  Expanded(
+                    child: Text(
+                      '© ${DateTime.now().year} ${settings?.siteName ?? loc.appTitle}. ${loc.copyright}',
+                      style: TextStyle(
+                        color: Colors.white.withOpacity(0.5),
+                        fontSize: 12,
+                      ),
                     ),
                   ),
                 ],
