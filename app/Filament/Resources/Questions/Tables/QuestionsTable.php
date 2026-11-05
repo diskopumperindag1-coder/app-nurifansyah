@@ -35,6 +35,12 @@ class QuestionsTable
                     ->label(__('Status'))
                     ->badge()
                     ->color(fn (QuestionStatus $state): string => $state->getColor()),
+                TextColumn::make('locale')
+                    ->label(__('Language'))
+                    ->badge()
+                    ->formatStateUsing(fn (?string $state): string => strtoupper($state ?? 'ID'))
+                    ->color('gray')
+                    ->sortable(),
                 TextColumn::make('created_at')
                     ->label(__('Submitted At'))
                     ->dateTime('d M Y H:i')

@@ -20,8 +20,14 @@ class SlideFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->sentence(4),
-            'description' => fake()->sentence(8),
+            'title' => [
+                'id' => fake('id_ID')->sentence(4),
+                'en' => fake('en_US')->sentence(4),
+            ],
+            'description' => [
+                'id' => fake('id_ID')->sentence(8),
+                'en' => fake('en_US')->sentence(8),
+            ],
             'image' => 'slides/sample.jpg',
             'link_url' => fake()->url(),
             'sort_order' => fake()->numberBetween(0, 10),

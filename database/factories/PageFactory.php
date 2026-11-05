@@ -22,13 +22,20 @@ class PageFactory extends Factory
      */
     public function definition(): array
     {
-        $title = fake()->sentence(3);
+        $titleId = fake('id_ID')->sentence(3);
+        $titleEn = fake('en_US')->sentence(3);
 
         return [
             'user_id' => User::factory(),
-            'title' => $title,
-            'slug' => Str::slug($title),
-            'content' => fake()->paragraphs(3, true),
+            'title' => [
+                'id' => $titleId,
+                'en' => $titleEn,
+            ],
+            'slug' => Str::slug($titleId),
+            'content' => [
+                'id' => fake('id_ID')->paragraphs(3, true),
+                'en' => fake('en_US')->paragraphs(3, true),
+            ],
             'image' => null,
             'status' => PageStatus::Published,
             'sort_order' => fake()->numberBetween(0, 10),

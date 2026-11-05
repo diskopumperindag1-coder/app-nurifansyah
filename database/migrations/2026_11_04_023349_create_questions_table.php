@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('subject');
             $table->longText('body');
+            $table->string('locale', 5)->default('id');
             $table->string('status')->default('pending');
             $table->string('ip_address')->nullable();
             $table->timestamps();

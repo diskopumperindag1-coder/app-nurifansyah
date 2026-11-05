@@ -31,23 +31,23 @@ class MenuSeeder extends Seeder
 
         // Header Items
         $items = [
-            ['label' => 'Beranda', 'url' => '/', 'type' => 'custom', 'sort_order' => 1],
-            ['label' => 'Tentang Kami', 'url' => '/pages/tentang-kami', 'type' => 'page', 'sort_order' => 2],
-            ['label' => 'Visi & Misi', 'url' => '/pages/visi-misi', 'type' => 'page', 'sort_order' => 3],
-            ['label' => 'Berita & Artikel', 'url' => '/posts', 'type' => 'custom', 'sort_order' => 4],
-            ['label' => 'Tanya Masyarakat', 'url' => '/questions', 'type' => 'custom', 'sort_order' => 5],
+            ['label' => ['id' => 'Beranda', 'en' => 'Home'], 'url' => '/', 'type' => 'custom', 'sort_order' => 1],
+            ['label' => ['id' => 'Tentang Kami', 'en' => 'About Us'], 'url' => '/pages/tentang-kami', 'type' => 'page', 'sort_order' => 2],
+            ['label' => ['id' => 'Visi & Misi', 'en' => 'Vision & Mission'], 'url' => '/pages/visi-misi', 'type' => 'page', 'sort_order' => 3],
+            ['label' => ['id' => 'Berita & Artikel', 'en' => 'News & Articles'], 'url' => '/posts', 'type' => 'custom', 'sort_order' => 4],
+            ['label' => ['id' => 'Tanya Masyarakat', 'en' => 'Public Inquiries'], 'url' => '/questions', 'type' => 'custom', 'sort_order' => 5],
         ];
 
         foreach ($items as $item) {
             MenuItem::updateOrCreate(
                 [
                     'menu_id' => $headerMenu->id,
-                    'label' => $item['label'],
+                    'sort_order' => $item['sort_order'],
                 ],
                 [
+                    'label' => $item['label'],
                     'url' => $item['url'],
                     'type' => $item['type'],
-                    'sort_order' => $item['sort_order'],
                     'is_active' => true,
                 ]
             );
@@ -55,21 +55,21 @@ class MenuSeeder extends Seeder
 
         // Footer items
         $footerItems = [
-            ['label' => 'Kebijakan Privasi', 'url' => '/pages/kebijakan-privasi', 'type' => 'custom', 'sort_order' => 1],
-            ['label' => 'Syarat & Ketentuan', 'url' => '/pages/syarat-ketentuan', 'type' => 'custom', 'sort_order' => 2],
-            ['label' => 'FAQ', 'url' => '/faqs', 'type' => 'custom', 'sort_order' => 3],
+            ['label' => ['id' => 'Kebijakan Privasi', 'en' => 'Privacy Policy'], 'url' => '/pages/kebijakan-privasi', 'type' => 'custom', 'sort_order' => 1],
+            ['label' => ['id' => 'Syarat & Ketentuan', 'en' => 'Terms & Conditions'], 'url' => '/pages/syarat-ketentuan', 'type' => 'custom', 'sort_order' => 2],
+            ['label' => ['id' => 'FAQ', 'en' => 'FAQ'], 'url' => '/faqs', 'type' => 'custom', 'sort_order' => 3],
         ];
 
         foreach ($footerItems as $fItem) {
             MenuItem::updateOrCreate(
                 [
                     'menu_id' => $footerMenu->id,
-                    'label' => $fItem['label'],
+                    'sort_order' => $fItem['sort_order'],
                 ],
                 [
+                    'label' => $fItem['label'],
                     'url' => $fItem['url'],
                     'type' => $fItem['type'],
-                    'sort_order' => $fItem['sort_order'],
                     'is_active' => true,
                 ]
             );

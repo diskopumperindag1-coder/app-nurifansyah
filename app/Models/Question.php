@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
     'phone',
     'subject',
     'body',
+    'locale',
     'status',
     'ip_address',
 ])]

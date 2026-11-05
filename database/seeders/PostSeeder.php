@@ -28,21 +28,48 @@ class PostSeeder extends Seeder
 
         $samplePosts = [
             [
-                'title' => 'Peluncuran Portal Layanan Publik Terpadu Berbasis Digital',
-                'summary' => 'Instansi meluncurkan portal baru guna mempermudah akses layanan dan pengaduan bagi seluruh lapisan masyarakat.',
-                'content' => '<p>Instansi resmi memperkenalkan portal layanan publik terpadu yang memadukan berbagai kanal informasi, pelaporan, dan pengaduan masyarakat dalam satu pintu.</p><p>Melalui inovasi ini, masyarakat dapat mengajukan pertanyaan, melacak status permohonan informasi, dan membaca rilis resmi instansi secara transparan dan akuntabel.</p>',
+                'title' => [
+                    'id' => 'Peluncuran Portal Layanan Publik Terpadu Berbasis Digital',
+                    'en' => 'Launch of Integrated Digital Public Service Portal',
+                ],
+                'summary' => [
+                    'id' => 'Instansi meluncurkan portal baru guna mempermudah akses layanan dan pengaduan bagi seluruh lapisan masyarakat.',
+                    'en' => 'The institution launches a new portal to facilitate access to services and public inquiries.',
+                ],
+                'content' => [
+                    'id' => '<p>Instansi resmi memperkenalkan portal layanan publik terpadu yang memadukan berbagai kanal informasi, pelaporan, dan pengaduan masyarakat dalam satu pintu.</p><p>Melalui inovasi ini, masyarakat dapat mengajukan pertanyaan, melacak status permohonan informasi, dan membaca rilis resmi instansi secara transparan dan akuntabel.</p>',
+                    'en' => '<p>The institution officially introduces an integrated public service portal combining multiple information channels, reporting, and public complaints under one roof.</p><p>Through this innovation, citizens can submit questions, track information request statuses, and read official press releases transparently and accountably.</p>',
+                ],
                 'is_featured' => true,
             ],
             [
-                'title' => 'Sosialisasi Program Transparansi dan Keterbukaan Informasi Publik',
-                'summary' => 'Kegiatan sosialisasi diadakan untuk meningkatkan pemahaman hak masyarakat atas informasi publik yang berkualitas.',
-                'content' => '<p>Dalam rangka memperingati Hari Keterbukaan Informasi, diselenggarakan forum diskusi bersama perwakilan masyarakat, komunitas, dan akademisi.</p><p>Keterbukaan informasi adalah wujud nyata komitmen instansi dalam menjalankan tata kelola pemerintahan yang bersih dan melayani.</p>',
+                'title' => [
+                    'id' => 'Sosialisasi Program Transparansi dan Keterbukaan Informasi Publik',
+                    'en' => 'Dissemination of Transparency and Public Information Openness Program',
+                ],
+                'summary' => [
+                    'id' => 'Kegiatan sosialisasi diadakan untuk meningkatkan pemahaman hak masyarakat atas informasi publik yang berkualitas.',
+                    'en' => 'Public workshop held to enhance citizens understanding of their right to quality public information.',
+                ],
+                'content' => [
+                    'id' => '<p>Dalam rangka memperingati Hari Keterbukaan Informasi, diselenggarakan forum diskusi bersama perwakilan masyarakat, komunitas, dan akademisi.</p><p>Keterbukaan informasi adalah wujud nyata komitmen instansi dalam menjalankan tata kelola pemerintahan yang bersih dan melayani.</p>',
+                    'en' => '<p>In celebration of Information Freedom Day, a discussion forum was held with community representatives and academics.</p><p>Information openness is a tangible manifestation of our commitment to clean and serving governance.</p>',
+                ],
                 'is_featured' => false,
             ],
             [
-                'title' => 'Jadwal Pemeliharaan Sistem Layanan Online Akhir Pekan Ini',
-                'summary' => 'Pemberitahuan pemeliharaan server rutin guna meningkatkan kestabilan dan kecepatan akses sistem.',
-                'content' => '<p>Diberitahukan kepada seluruh pengguna layanan, akan dilakukan pemeliharaan server berkala pada hari Sabtu pukul 22.00 WIB hingga Minggu pukul 04.00 WIB.</p><p>Selama proses pemeliharaan berlangsung, beberapa layanan mungkin mengalami kendala sementara.</p>',
+                'title' => [
+                    'id' => 'Jadwal Pemeliharaan Sistem Layanan Online Akhir Pekan Ini',
+                    'en' => 'Scheduled System Maintenance This Weekend',
+                ],
+                'summary' => [
+                    'id' => 'Pemberitahuan pemeliharaan server rutin guna meningkatkan kestabilan dan kecepatan akses sistem.',
+                    'en' => 'Notice of routine server maintenance to improve system stability and access speed.',
+                ],
+                'content' => [
+                    'id' => '<p>Diberitahukan kepada seluruh pengguna layanan, akan dilakukan pemeliharaan server berkala pada hari Sabtu pukul 22.00 WIB hingga Minggu pukul 04.00 WIB.</p><p>Selama proses pemeliharaan berlangsung, beberapa layanan mungkin mengalami kendala sementara.</p>',
+                    'en' => '<p>Please be advised that scheduled maintenance will take place on Saturday from 10:00 PM to Sunday 04:00 AM.</p><p>During the maintenance window, some services may experience temporary interruptions.</p>',
+                ],
                 'is_featured' => false,
             ],
         ];
@@ -51,7 +78,7 @@ class PostSeeder extends Seeder
             $cat = $categories->get($index % $categories->count());
 
             Post::updateOrCreate(
-                ['slug' => Str::slug($item['title'])],
+                ['slug' => Str::slug($item['title']['id'])],
                 [
                     'user_id' => $user->id,
                     'category_id' => $cat->id,

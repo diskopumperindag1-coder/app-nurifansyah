@@ -35,7 +35,7 @@ class QuestionForm
 
                 Section::make(__('Question Details'))
                     ->schema([
-                        Grid::make(2)
+                        Grid::make(3)
                             ->schema([
                                 Select::make('topic_id')
                                     ->label(__('Question Topic'))
@@ -45,6 +45,14 @@ class QuestionForm
                                     ->label(__('Question Status'))
                                     ->options(QuestionStatus::class)
                                     ->default(QuestionStatus::Pending->value)
+                                    ->required(),
+                                Select::make('locale')
+                                    ->label(__('Language'))
+                                    ->options([
+                                        'id' => 'Bahasa Indonesia',
+                                        'en' => 'English',
+                                    ])
+                                    ->default('id')
                                     ->required(),
                             ]),
                         TextInput::make('subject')

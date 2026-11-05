@@ -45,11 +45,14 @@ class MenuForm
                         Repeater::make('items')
                             ->relationship('items')
                             ->schema([
-                                Grid::make(4)
+                                Grid::make(5)
                                     ->schema([
-                                        TextInput::make('label')
-                                            ->label(__('Item Label'))
+                                        TextInput::make('label.id')
+                                            ->label(__('Label (ID)'))
                                             ->required(),
+                                        TextInput::make('label.en')
+                                            ->label(__('Label (EN)'))
+                                            ->nullable(),
                                         Select::make('type')
                                             ->label(__('Link Type'))
                                             ->options([
@@ -72,7 +75,9 @@ class MenuForm
                             ])
                             ->orderColumn('sort_order')
                             ->collapsible()
-                            ->itemLabel(fn (array $state): ?string => $state['label'] ?? null)
+                            ->itemLabel(fn (array $state): ?string => is_array($state['label'] ?? null)
+                                ? ($state['label'][app()->getLocale()] ?? $state['label']['id'] ?? reset($state['label']) ?: null)
+                                : ($state['label'] ?? null))
                             ->columnSpanFull(),
                     ]),
             ]);

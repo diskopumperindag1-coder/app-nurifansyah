@@ -15,26 +15,50 @@ class QuestionTopicSeeder extends Seeder
     {
         $topics = [
             [
-                'name' => 'Layanan Administrasi',
-                'description' => 'Pertanyaan seputar surat izin, rekomendasi, dan berkas administrasi.',
+                'name' => [
+                    'id' => 'Layanan Administrasi',
+                    'en' => 'Administrative Services',
+                ],
+                'description' => [
+                    'id' => 'Pertanyaan seputar surat izin, rekomendasi, dan berkas administrasi.',
+                    'en' => 'Inquiries regarding permits, recommendations, and administrative files.',
+                ],
                 'icon' => 'document-check',
                 'sort_order' => 1,
             ],
             [
-                'name' => 'Pengaduan & Aspirasi',
-                'description' => 'Laporan kendala di lapangan, aspirasi perbaikan, atau saran pelayanan.',
+                'name' => [
+                    'id' => 'Pengaduan & Aspirasi',
+                    'en' => 'Complaints & Aspirations',
+                ],
+                'description' => [
+                    'id' => 'Laporan kendala di lapangan, aspirasi perbaikan, atau saran pelayanan.',
+                    'en' => 'Field issue reports, improvement aspirations, or service suggestions.',
+                ],
                 'icon' => 'chat-bubble-bottom-center-text',
                 'sort_order' => 2,
             ],
             [
-                'name' => 'Informasi Publik & Dokumen',
-                'description' => 'Permohonan informasi berkala, dokumen resmi, dan statistik instansi.',
+                'name' => [
+                    'id' => 'Informasi Publik & Dokumen',
+                    'en' => 'Public Information & Documents',
+                ],
+                'description' => [
+                    'id' => 'Permohonan informasi berkala, dokumen resmi, dan statistik instansi.',
+                    'en' => 'Periodic information requests, official documents, and institutional statistics.',
+                ],
                 'icon' => 'information-circle',
                 'sort_order' => 3,
             ],
             [
-                'name' => 'Layanan Kepegawaian & Magang',
-                'description' => 'Informasi program magang, PKL, dan rekrutmen pegawai.',
+                'name' => [
+                    'id' => 'Layanan Kepegawaian & Magang',
+                    'en' => 'Staffing & Internship Services',
+                ],
+                'description' => [
+                    'id' => 'Informasi program magang, PKL, dan rekrutmen pegawai.',
+                    'en' => 'Information on internship programs and employee recruitment.',
+                ],
                 'icon' => 'academic-cap',
                 'sort_order' => 4,
             ],
@@ -42,7 +66,7 @@ class QuestionTopicSeeder extends Seeder
 
         foreach ($topics as $topic) {
             QuestionTopic::updateOrCreate(
-                ['slug' => Str::slug($topic['name'])],
+                ['slug' => Str::slug($topic['name']['id'])],
                 [
                     'name' => $topic['name'],
                     'description' => $topic['description'],
