@@ -124,7 +124,7 @@ class ContactScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: AppTheme.primaryBlue.withOpacity(0.08),
+                color: AppTheme.primaryBlue.withValues(alpha: 0.08),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Icon(icon, color: AppTheme.primaryBlue, size: 24),

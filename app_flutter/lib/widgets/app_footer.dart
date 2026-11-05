@@ -56,7 +56,7 @@ class AppFooter extends StatelessWidget {
                       Text(
                         settings?.siteDescription ?? loc.tagline,
                         style: TextStyle(
-                          color: Colors.white.withOpacity(0.7),
+                          color: Colors.white.withValues(alpha: 0.7),
                           fontSize: 13,
                           height: 1.5,
                         ),
@@ -105,7 +105,7 @@ class AppFooter extends StatelessWidget {
                             Expanded(
                               child: Text(
                                 settings!.officeAddress!,
-                                style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 13),
+                                style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13),
                               ),
                             ),
                           ],
@@ -119,7 +119,7 @@ class AppFooter extends StatelessWidget {
                             const SizedBox(width: 8),
                             Text(
                               settings!.officePhone!,
-                              style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 13),
+                              style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13),
                             ),
                           ],
                         ),
@@ -132,7 +132,7 @@ class AppFooter extends StatelessWidget {
                             const SizedBox(width: 8),
                             Text(
                               settings!.officeEmail!,
-                              style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 13),
+                              style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13),
                             ),
                           ],
                         ),
@@ -166,7 +166,7 @@ class AppFooter extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 48),
-              Divider(color: Colors.white.withOpacity(0.1)),
+              Divider(color: Colors.white.withValues(alpha: 0.1)),
               const SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -175,7 +175,7 @@ class AppFooter extends StatelessWidget {
                     child: Text(
                       '© ${DateTime.now().year} ${settings?.siteName ?? loc.appTitle}. ${loc.copyright}',
                       style: TextStyle(
-                        color: Colors.white.withOpacity(0.5),
+                        color: Colors.white.withValues(alpha: 0.5),
                         fontSize: 12,
                       ),
                     ),
@@ -197,7 +197,7 @@ class AppFooter extends StatelessWidget {
         child: Text(
           label,
           style: TextStyle(
-            color: Colors.white.withOpacity(0.75),
+            color: Colors.white.withValues(alpha: 0.75),
             fontSize: 13,
           ),
         ),

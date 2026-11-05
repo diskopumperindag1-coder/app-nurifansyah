@@ -24,7 +24,7 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
         border: Border(bottom: BorderSide(color: Colors.grey.shade200)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.02),
+            color: Colors.black.withValues(alpha: 0.02),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -130,7 +130,7 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
         style: TextButton.styleFrom(
           foregroundColor: isActive ? AppTheme.primaryBlue : AppTheme.textDark,
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-          backgroundColor: isActive ? AppTheme.primaryBlue.withOpacity(0.08) : Colors.transparent,
+          backgroundColor: isActive ? AppTheme.primaryBlue.withValues(alpha: 0.08) : Colors.transparent,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
         child: Text(

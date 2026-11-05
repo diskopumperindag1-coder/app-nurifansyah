@@ -168,7 +168,7 @@ class _FaqScreenState extends State<FaqScreen> {
                             width: 36,
                             height: 36,
                             decoration: BoxDecoration(
-                              color: AppTheme.primaryBlue.withOpacity(0.08),
+                              color: AppTheme.primaryBlue.withValues(alpha: 0.08),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: const Center(
@@ -212,7 +212,7 @@ class _FaqScreenState extends State<FaqScreen> {
                 Container(
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
-                    color: Colors.blue.shade50.withOpacity(0.6),
+                    color: Colors.blue.shade50.withValues(alpha: 0.6),
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(color: Colors.blue.shade100),
                   ),

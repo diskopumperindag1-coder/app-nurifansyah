@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:frontend/core/localization/app_locale_provider.dart';
-import 'package:frontend/core/localization/app_localizations.dart';
-import 'package:frontend/core/network/api_client.dart';
-import 'package:frontend/models/category.dart';
-import 'package:frontend/models/post.dart';
-import 'package:frontend/providers/page_provider.dart';
-import 'package:frontend/providers/portal_provider.dart';
-import 'package:frontend/providers/post_provider.dart';
-import 'package:frontend/providers/question_provider.dart';
-import 'package:frontend/widgets/language_switcher.dart';
-import 'package:frontend/widgets/post_card.dart';
+import 'package:app_flutter/core/localization/app_locale_provider.dart';
+import 'package:app_flutter/core/localization/app_localizations.dart';
+import 'package:app_flutter/core/network/api_client.dart';
+import 'package:app_flutter/models/category.dart';
+import 'package:app_flutter/models/post.dart';
+import 'package:app_flutter/providers/page_provider.dart';
+import 'package:app_flutter/providers/portal_provider.dart';
+import 'package:app_flutter/providers/post_provider.dart';
+import 'package:app_flutter/providers/question_provider.dart';
+import 'package:app_flutter/widgets/language_switcher.dart';
+import 'package:app_flutter/widgets/post_card.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -98,7 +98,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             decoration: BoxDecoration(
-              color: AppTheme.primaryBlue.withOpacity(0.08),
+              color: AppTheme.primaryBlue.withValues(alpha: 0.08),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Text(
@@ -125,7 +125,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
           children: [
             CircleAvatar(
               radius: 18,
-              backgroundColor: AppTheme.primaryBlue.withOpacity(0.1),
+              backgroundColor: AppTheme.primaryBlue.withValues(alpha: 0.1),
               child: Text(
                 post.author?.name?.isNotEmpty == true ? post.author!.name![0].toUpperCase() : 'A',
                 style: const TextStyle(color: AppTheme.primaryBlue, fontWeight: FontWeight.bold),
@@ -165,7 +165,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: Colors.blue.shade50.withOpacity(0.6),
+              color: Colors.blue.shade50.withValues(alpha: 0.6),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(color: Colors.blue.shade100),
             ),

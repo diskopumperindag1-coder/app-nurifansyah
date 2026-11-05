@@ -213,7 +213,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         width: 44,
                         height: 44,
                         decoration: BoxDecoration(
-                          color: AppTheme.primaryBlue.withOpacity(0.08),
+                          color: AppTheme.primaryBlue.withValues(alpha: 0.08),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: const Icon(
@@ -270,7 +270,7 @@ class _HomeScreenState extends State<HomeScreen> {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF1E3A8A).withOpacity(0.25),
+            color: const Color(0xFF1E3A8A).withValues(alpha: 0.25),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -295,7 +295,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Text(
                 loc.questionsSubtitle,
                 style: TextStyle(
-                  color: Colors.white.withOpacity(0.9),
+                  color: Colors.white.withValues(alpha: 0.9),
                   fontSize: 14,
                   height: 1.4,
                 ),

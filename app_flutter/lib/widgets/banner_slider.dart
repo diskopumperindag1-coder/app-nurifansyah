@@ -104,7 +104,7 @@ class _BannerSliderState extends State<BannerSlider> {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withValues(alpha: 0.08),
             blurRadius: 15,
             offset: const Offset(0, 6),
           ),
@@ -129,8 +129,8 @@ class _BannerSliderState extends State<BannerSlider> {
                 end: Alignment.bottomCenter,
                 colors: [
                   Colors.transparent,
-                  Colors.black.withOpacity(0.3),
-                  Colors.black.withOpacity(0.85),
+                  Colors.black.withValues(alpha: 0.3),
+                  Colors.black.withValues(alpha: 0.85),
                 ],
                 stops: const [0.3, 0.6, 1.0],
               ),
@@ -168,7 +168,7 @@ class _BannerSliderState extends State<BannerSlider> {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      color: Colors.white.withOpacity(0.9),
+                      color: Colors.white.withValues(alpha: 0.9),
                       fontSize: isDesktop ? 14 : 12,
                     ),
                   ),

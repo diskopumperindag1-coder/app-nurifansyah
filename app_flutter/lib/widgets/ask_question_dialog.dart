@@ -178,7 +178,7 @@ class _AskQuestionDialogState extends State<AskQuestionDialog> {
             Text(loc.formTopic, style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 13)),
             const SizedBox(height: 6),
             DropdownButtonFormField<int>(
-              value: _selectedTopicId,
+              initialValue: _selectedTopicId,
               decoration: const InputDecoration(contentPadding: EdgeInsets.symmetric(horizontal: 14, vertical: 12)),
               items: widget.topics.map((t) {
                 return DropdownMenuItem<int>(
