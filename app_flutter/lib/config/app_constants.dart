@@ -30,4 +30,3 @@ class AppConstants {
   static const String defaultLocale = 'id';
   static const List<String> supportedLocales = ['id', 'en'];
 }
-
