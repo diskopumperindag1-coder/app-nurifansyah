@@ -45,7 +45,7 @@ Aplikasi frontend portal publik berbasis **Flutter** yang terintegrasi penuh den
 
 2. **Jalankan Aplikasi Flutter**:
    ```bash
-   cd frontend
+   cd app_flutter
    flutter pub get
    
    # Jalankan di Chrome / Web:

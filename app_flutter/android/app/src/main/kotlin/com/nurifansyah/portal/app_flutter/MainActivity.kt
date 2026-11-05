@@ -1,4 +1,4 @@
-package com.nurifansyah.portal.frontend
+package com.nurifansyah.portal.app_flutter
 
 import io.flutter.embedding.android.FlutterActivity
 
